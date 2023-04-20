@@ -22,6 +22,7 @@ plugins {
 
 android {
     compileSdkVersion 33
+    buildToolsVersion "31.0.0"
 
     defaultConfig {
         applicationId "com.example.android.unscramble"
@@ -39,16 +40,23 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = "17"
     }
     buildFeatures {
-        viewBinding true
+        dataBinding = true
     }
+
+    namespace 'com.example.android.unscramble'
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile) {
+    kotlinOptions.jvmTarget = "17"
 }
 
 dependencies {
